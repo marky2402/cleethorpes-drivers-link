@@ -31,7 +31,7 @@ function getCookie(cname) {
 
 // remember, 06/07/2023, is actually 06/08/2023 because Jan starts
 // at zero.
-const linkWeekCommencing = new Date(2025, 5, 1);
+const linkWeekCommencing = new Date(2025, 7, 31);
 let driv = getCookie('driver');
 let driver = driv ? driv : 'CAMBRIDGE';
 let currentWeekComm;
