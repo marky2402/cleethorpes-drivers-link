@@ -1,0 +1,301 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  /* padding: 0 1rem; */
+  margin: 0 auto;
+}
+
+.main-header {
+  background-color: #1e1e1e;
+
+  /* Because we want the header to be sticky later */
+  width: 100%;
+  height: 5.6rem;
+  padding: 0 5.6rem;
+  font-size: 2rem;
+  /* display: flex; */
+  /* align-items: center; */
+  position: fixed;
+  z-index: 999;
+  /* top: 0; */
+  /* left: 0; */
+  /* overflow: hidden; */
+}
+
+/* nav {
+  width: 90%;
+  max-width: 60rem;
+  padding: 2rem;
+  margin: 0 auto;
+} */
+
+.navbar {
+  /* width: 100%; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  /* gap: 7.4rem; */
+}
+
+.driver-menu,
+.date-menu {
+  color: white;
+  display: flex;
+  height: 100%;
+}
+
+.menu-item--1,
+.menu-item--3 {
+  padding: 1.4rem;
+}
+
+.dropdown--1,
+.dropdown--2 {
+  position: relative;
+  flex: 0 0 205px;
+}
+
+.select-driver-btn,
+.select-date-btn {
+  border: none;
+  padding: 1.4rem 2.4rem;
+  min-width: 100%;
+  height: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  color: currentColor;
+  cursor: pointer;
+}
+
+.dropdown-content--1,
+.dropdown-content--2 {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  min-width: 100%;
+  max-height: 80vh;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content--1,
+.dropdown-content--2 {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+/* Drivers' names inside the dropdown */
+.dropdown-content--1 div,
+.dropdown-content--2 div {
+  color: black;
+  padding: 16px 16px;
+}
+
+/* .downarrow-icon-1 {
+  width: 2.4rem;
+  height: 2.4rem;
+} */
+
+.down--1,
+.down--2 {
+  display: inline-block;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: solid white;
+  border-width: 1px 1px 0 0;
+  transform: rotate(135deg);
+  margin: 0 0 2px 5px;
+}
+
+.select-driver-btn:hover,
+.select-date-btn:hover {
+  background-color: red;
+}
+
+/* Change color of a driver's name on hover */
+.dropdown-content--1 div:hover,
+.dropdown-content--2 div:hover {
+  background-color: rgb(190, 190, 190);
+}
+
+/* Show the dropdown menu on hover */
+/* .dropdown--1:hover .dropdown-content--1,
+.dropdown--2:hover .dropdown-content--2 {
+  display: block;
+} */
+
+.dropdown--1.active .dropdown-content--1,
+.dropdown--2.active .dropdown-content--2 {
+  display: block;
+}
+
+main {
+  padding-top: 5.6rem;
+}
+
+.table {
+  display: grid;
+  /* grid-template-columns: repeat(31, 1fr); */
+  grid-template-columns: auto auto auto repeat(7, minmax(8.8rem, 1fr));
+}
+
+.header-name {
+  grid-row: 1 / span 2;
+}
+
+.header-week-com {
+  grid-row: 1 / span 2;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header-week-no {
+  grid-row: 1 / span 2;
+}
+
+[class*="container-"] {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr)); */
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+/* [class*="container-"]:has(.rd) {
+  background-color: #bae9e7;
+} */
+
+/* [class*="container-"]:has(.sp) {
+  background-color: #bae9ba;
+} */
+
+.has-rd {
+  background-color: #bae9e7;
+}
+
+.has-sp {
+  background-color: #bae9ba;
+}
+
+.has-rr {
+  background-color: #fff700;
+}
+
+div {
+  white-space: nowrap;
+}
+
+.table > div {
+  text-align: center;
+  border: 1px solid rgb(200, 200, 200);
+  padding: 0.8rem 0.4rem;
+}
+
+div.header {
+  font-size: 1.5rem;
+  font-weight: 500;
+  background-color: rgb(235, 235, 235);
+}
+
+.diagram-link:link,
+.diagram-link:visited {
+  color: currentColor;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.diagram-link:hover,
+.diagram-link:active {
+  color: #cf711f;
+}
+
+@media (min-width: 1040px) {
+  [class*="container-"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  [class*="container-"]:has(.rd) {
+    grid-template-columns: 1fr;
+  }
+
+  .header-week-com {
+    display: inline;
+  }
+}
+
+@media (min-width: 1760px) {
+  [class*="container-"] {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  [class*="container-"]:has(.rd) {
+    grid-template-columns: 1fr;
+  }
+
+  .header-week-com {
+    display: inline;
+  }
+}
+
+/* [class*="container-"] {
+    display: flex;
+    gap: 5rem;
+  } */
+
+/* div.sp {
+  background-color: #bae9ba;
+  @media (min-width: 900px) {
+    background-color: #e4b3db;
+  }
+} */
+
+/* .sunday {
+    grid-column: 4 / span 4;
+  } */
+
+/* .monday {
+    grid-column: 8 / span 4;
+  } */
+
+/* .tuesday {
+    grid-column: 12 / span 4;
+  } */
+
+/* .wednesday {
+    grid-column: 16 / span 4;
+  } */
+
+/* .thursday {
+    grid-column: 20 / span 4;
+  } */
+
+/* .friday {
+    grid-column: 24 / span 4;
+  } */
+
+/* .saturday {
+    grid-column: 28 / span 4;
+  } */
