@@ -75,7 +75,9 @@ main {
 .table {
   margin-bottom: 2rem;
   display: grid;
-  grid-template-columns: [action location] minmax(12rem, 1.6fr) [route arrival] 1fr [departure] 1fr [remarks] 1fr;
+  grid-template-columns:
+    [action location] minmax(12rem, 1.6fr)
+    [route arrival] 1fr [departure] 1fr [remarks] 1fr;
   grid-template-rows: 2.3rem 3rem 3rem;
   grid-template-areas:
     "action-heading route-heading unit-heading unit-heading"
@@ -155,7 +157,9 @@ main {
 .table-body {
   margin-bottom: 2rem;
   display: grid;
-  grid-template-columns: [location] minmax(12rem, 1.6fr) [arrival route] 1fr [departure unit] 1fr [remarks] 1fr;
+  grid-template-columns:
+    [location] minmax(12rem, 1.6fr)
+    [arrival route] 1fr [departure unit] 1fr [remarks] 1fr;
   grid-template-rows: 3rem;
 }
 
@@ -195,6 +199,12 @@ main {
   background-color: rgb(205, 200, 50);
 }
 
+.unusual-diversion {
+  font-size: 2rem;
+  text-align: center;
+  color: rgb(205, 50, 50);
+}
+
 @media (min-width: 25em) {
   html {
     /* 11 / 16 = 0.6875 = 68.75% => 1 rem = 11 pixels */
@@ -215,7 +225,9 @@ main {
   .table {
     margin-bottom: 2.5rem;
     display: grid;
-    grid-template-columns: [action] minmax(2.2rem, 1fr) [location] 2fr [arrival] 1fr [departure] 1fr [remarks] 1.5fr [unit] 1fr [route] 1fr;
+    grid-template-columns:
+      [action] minmax(2.2rem, 1fr)
+      [location] 2fr [arrival] 1fr [departure] 1fr [remarks] 1.5fr [unit] 1fr [route] 1fr;
     grid-template-rows: 2.4rem 3rem;
     grid-template-areas:
       "action-heading location-heading arrival-heading departure-heading remarks-heading unit-heading route-heading"
@@ -256,7 +268,9 @@ main {
   .table-body {
     margin-bottom: 2.5rem;
     display: grid;
-    grid-template-columns: [action] minmax(2.2rem, 1fr) [location] 2fr [arrival] 1fr [departure] 1fr [remarks] 1.5fr [unit] 1fr [unit] 1fr;
+    grid-template-columns:
+      [action] minmax(2.2rem, 1fr)
+      [location] 2fr [arrival] 1fr [departure] 1fr [remarks] 1.5fr [unit] 1fr [unit] 1fr;
     grid-template-rows: 3rem;
   }
 
@@ -339,7 +353,9 @@ main {
   } */
 
   .table {
-    grid-template-columns: [action] minmax(2.2rem, 1fr) [location] 2fr [arrival] 1fr [departure] 1fr [remarks] 1fr [unit] 1.5fr [route] 1fr;
+    grid-template-columns:
+      [action] minmax(2.2rem, 1fr)
+      [location] 2fr [arrival] 1fr [departure] 1fr [remarks] 1fr [unit] 1.5fr [route] 1fr;
   }
 
   .unit-heading {
@@ -349,7 +365,9 @@ main {
   .table-body {
     margin-bottom: 2rem;
     display: grid;
-    grid-template-columns: [action] minmax(2.2rem, 1fr) [location] 2fr [arrival] 1fr [departure] 1fr [remarks] 1fr [unit] 1.5fr [route] 1fr;
+    grid-template-columns:
+      [action] minmax(2.2rem, 1fr)
+      [location] 2fr [arrival] 1fr [departure] 1fr [remarks] 1fr [unit] 1.5fr [route] 1fr;
     grid-template-rows: auto;
   }
 
