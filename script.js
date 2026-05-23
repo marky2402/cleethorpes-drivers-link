@@ -31,7 +31,7 @@ function getCookie(cname) {
 
 // remember, 06/07/2023, is actually 06/08/2023 because Jan starts
 // at zero.
-const linkWeekCommencing = new Date(2025, 11, 14);
+const linkWeekCommencing = new Date(2026, 4, 17);
 let driv = getCookie('driver');
 let driver = driv ? driv : 'CAMBRIDGE';
 let currentWeekComm;
@@ -51,7 +51,7 @@ const fullDate = new Date(); // today's date
 const currentDate = new Date(
   fullDate.getFullYear(),
   fullDate.getMonth(),
-  fullDate.getDate()
+  fullDate.getDate(),
 );
 
 // create optional arguments to be passed to
@@ -66,12 +66,9 @@ const options = {
 
 console.log(
   'Link Week Commencing',
-  linkWeekCommencing.toLocaleDateString(region, options)
+  linkWeekCommencing.toLocaleDateString(region, options),
 );
-console.log(
-  'Current Date',
-  currentDate.toLocaleDateString(region, options)
-);
+console.log('Current Date', currentDate.toLocaleDateString(region, options));
 
 // *******************
 // * Helper function *
@@ -98,12 +95,10 @@ const toDate = dateStr => {
 
 // set date in button on HTML
 const setDateOnButton = setDateTo => {
-  const dateSelectedNavbar = document.querySelector(
-    '.select-date-btn'
-  );
+  const dateSelectedNavbar = document.querySelector('.select-date-btn');
   dateSelectedNavbar.textContent = setDateTo.toLocaleDateString(
     region,
-    options
+    options,
   );
 
   // add the downarrow div element
@@ -133,10 +128,7 @@ const generateDatesDropDown = () => {
   for (let i = 0; i < dateSelectEl.length; i++) {
     let futureDate = new Date(currentWeekComm);
     futureDate.setDate(currentWeekComm.getDate() + i * 7);
-    dateDropDownList[i] = futureDate.toLocaleDateString(
-      region,
-      options
-    );
+    dateDropDownList[i] = futureDate.toLocaleDateString(region, options);
   }
   dateSelectEl.forEach(function (element, index) {
     element.textContent = dateDropDownList[index];
@@ -190,7 +182,7 @@ function rotateDrivers(newDate = currentDate) {
     ${newDate} - ${linkWeekCommencing} = ${difference}`);
 
   const differenceInDays = Math.round(
-    Math.abs(difference) / (1000 * 3600 * 24)
+    Math.abs(difference) / (1000 * 3600 * 24),
   );
   let rotateIndex = Math.floor(differenceInDays / 7);
   // correct for where index exceeds the total number of drivers in the link
@@ -198,7 +190,7 @@ function rotateDrivers(newDate = currentDate) {
 
   console.log(
     'Difference in days between link start date and current date',
-    differenceInDays
+    differenceInDays,
   );
   console.log('Amount by which to rotate drivers list', rotateIndex);
 
@@ -206,7 +198,7 @@ function rotateDrivers(newDate = currentDate) {
   const rotatedDriverNames = [...unrotatedDriverNames];
   console.log(
     'After rotation:',
-    rotateElements(rotatedDriverNames, rotateIndex) //rotatedDriverNames mutated
+    rotateElements(rotatedDriverNames, rotateIndex), //rotatedDriverNames mutated
   );
 
   nameEl.forEach(function (node, index) {
@@ -232,14 +224,14 @@ rotatedDriversList = rotateDrivers(); // use currentDate as default argument
 function calculateDates(
   driverSelect = driver,
   rotatedDrivers = rotatedDriversList,
-  WeekComm = currentWeekComm
+  WeekComm = currentWeekComm,
 ) {
   let driversStartingPos = rotatedDrivers.indexOf(driverSelect);
   console.log(
     "Driver's position:",
     driverSelect,
     '-->',
-    driversStartingPos + 1
+    driversStartingPos + 1,
   );
 
   const dateArr = [];
@@ -248,13 +240,8 @@ function calculateDates(
   for (let i = 0; i < nameEl.length; i++) {
     tempDate = new Date(WeekComm); //create a copy
     let pos = (driversStartingPos + i) % nameEl.length;
-    dateArr[pos] = new Date(
-      tempDate.setDate(WeekComm.getDate() + i * 7)
-    );
-    dateArrStr[pos] = dateArr[pos].toLocaleDateString(
-      region,
-      options
-    );
+    dateArr[pos] = new Date(tempDate.setDate(WeekComm.getDate() + i * 7));
+    dateArrStr[pos] = dateArr[pos].toLocaleDateString(region, options);
   }
 
   console.log(dateArrStr);
@@ -270,9 +257,7 @@ function calculateDates(
   // Update Driver's name on navbar in HTML
 
   if (driver !== driverSelect) driver = driverSelect;
-  const driverSelectedNavbar = document.querySelector(
-    '.select-driver-btn'
-  );
+  const driverSelectedNavbar = document.querySelector('.select-driver-btn');
   driverSelectedNavbar.textContent = driver;
 
   // add the downarrow div element
@@ -283,7 +268,7 @@ function calculateDates(
 
 console.log(
   'Current Week Commencing:',
-  currentWeekComm.toLocaleDateString(region, options)
+  currentWeekComm.toLocaleDateString(region, options),
 );
 console.log('Current Driver', driver);
 // console.log("Current Driver Names", driverNames);
@@ -309,11 +294,7 @@ document.addEventListener('click', event => {
     console.log('Driver Selected:', driverSelected);
     // set cookie to newly selected driver
     setCookie('driver', driverSelected, 28);
-    calculateDates(
-      driverSelected,
-      rotatedDriversList,
-      currentWeekComm
-    );
+    calculateDates(driverSelected, rotatedDriversList, currentWeekComm);
     // clear drivers dropdown menu so we can see the changes
     dropdownEl1.classList.toggle('active');
   } else if (event.target.matches('.date-select')) {
@@ -324,7 +305,7 @@ document.addEventListener('click', event => {
     currentWeekComm = toDate(targetDateStr);
     console.log(
       'Date selected (in Date format):',
-      currentWeekComm.toLocaleDateString(region, options)
+      currentWeekComm.toLocaleDateString(region, options),
     );
     rotatedDriversList = rotateDrivers(currentWeekComm);
     calculateDates(undefined, rotatedDriversList, currentWeekComm);
